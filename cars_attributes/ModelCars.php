@@ -30,7 +30,7 @@
     {
         /**
          * It references to self object: ModelCars.
-         * It is used as a singleton
+         * It is used as a singleton 
          * 
          * @access private
          * @since 3.0
