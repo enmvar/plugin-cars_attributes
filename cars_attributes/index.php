@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Bender Cars Attributes
+Plugin Name:  Cars Attributes
 Plugin URI: http://www.osclass.org/
 Description: This plugin extends a category of items to store cars attributes such as model, year, brand, color, accessories, and so on.
 Version: 3.0.4
