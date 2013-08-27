@@ -25,6 +25,18 @@
         <td width="150px"><?php echo $detail['i_year']; ?></td>
     </tr>
     <?php } ?>
+  <?php if( !empty($detail['s_extColr']) ) { ?>
+    <tr>
+        <td width="150px"><label><?php _e('Exterior Color', 'cars_attributes'); ?></label></td>
+        <td width="150px"><?php echo $detail['s_extColr']; ?></td>
+    </tr>
+    <?php } ?>
+  <?php if( !empty($detail['s_intColr']) ) { ?>
+    <tr>
+        <td width="150px"><label><?php _e('Interior Color', 'cars_attributes'); ?></label></td>
+        <td width="150px"><?php echo $detail['s_intColr']; ?></td>
+    </tr>
+    <?php } ?>
     <?php if( !empty($detail['i_doors']) ) { ?>
     <tr>
         <td width="150px"><label><?php _e('Doors', 'cars_attributes'); ?></label></td>
