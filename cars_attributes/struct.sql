@@ -25,6 +25,8 @@ CREATE TABLE /*TABLE_PREFIX*/t_item_car_model_attr (
 
 CREATE TABLE /*TABLE_PREFIX*/t_item_car_attr (
     fk_i_item_id INT(10) UNSIGNED NOT NULL,
+    s_extColr VARCHAR(255),
+    s_intColr VARCHAR(255),
     i_year INT(4) UNSIGNED,
     i_doors INT(1) UNSIGNED,
     i_seats INT(4) UNSIGNED,
