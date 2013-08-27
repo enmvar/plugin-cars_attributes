@@ -105,6 +105,24 @@
         <label><?php _e('Year', 'cars_attributes'); ?></label>
         <input type="text" name="year" id="year" value="<?php echo @$detail['i_year']; ?>" size=4 />
     </div>
+    <div class="row _200">
+        <?php
+            if( Session::newInstance()->_getForm('pc_extColr') != '' ) {
+                $detail['s_extColr'] = Session::newInstance()->_getForm('pc_extColr');
+            }
+        ?>
+        <label><?php _e('Exterior Color', 'cars_attributes'); ?></label>
+        <input type="text" name="extColr" id="extColr" value="<?php echo @$detail['s_extColr']; ?>" size=10 />
+    </div>
+    <div class="row _200">
+        <?php
+            if( Session::newInstance()->_getForm('pc_intColr') != '' ) {
+                $detail['s_intColr'] = Session::newInstance()->_getForm('pc_intColr');
+            }
+        ?>
+        <label><?php _e('Interior Color', 'cars_attributes'); ?></label>
+        <input type="text" name="intColr" id="intColr" value="<?php echo @$detail['s_intColr']; ?>" size=10 />
+    </div>
     <div class="row auto">
         <?php
             if( Session::newInstance()->_getForm('pc_doors') != '' ) {
