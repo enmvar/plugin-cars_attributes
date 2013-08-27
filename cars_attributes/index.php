@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Cars attributes
+Plugin Name: Bender Cars Attributes
 Plugin URI: http://www.osclass.org/
 Description: This plugin extends a category of items to store cars attributes such as model, year, brand, color, accessories, and so on.
 Version: 3.0.4
 Author: OSClass
 Author URI: http://www.osclass.org/
 Short Name: cars_plugin
-Plugin update URI: cars-attributes
+Plugin update URI:  
 */
     require_once 'ModelCars.php' ;
 
@@ -84,8 +84,13 @@ Plugin update URI: cars-attributes
             if(Session::newInstance()->_getForm('pc_make') != '') {
                 $models = ModelCars::newInstance()->getCarModels(Session::newInstance()->_getForm('pc_make'));
             }
-            require_once 'item_edit.php';
-        }
+            $cartheme = osc_current_web_theme();
+            if(stristr($cartheme, 'bender')){ 
+            require_once 'bender_item_edit.php';        
+            }else{
+                 require_once 'item_edit.php';
+                 }
+            }
     }
 
     function cars_search_form($catID = null) {
@@ -165,7 +170,12 @@ Plugin update URI: cars-attributes
                 $car_types[$d['fk_c_locale_code']][$d['pk_i_id']] = $d['s_name'];
             }
             unset($data);
+            $cartheme = osc_current_web_theme();
+            if(stristr($cartheme, 'bender')){ 
+            require_once 'bender_item_edit.php';        
+            }else{
             require_once 'item_edit.php';
+                 }
         }
     }
 
@@ -220,6 +230,8 @@ Plugin update URI: cars-attributes
         $new      = (Params::getParam("new") != '') ? 1 : 0 ;
 
         Session::newInstance()->_setForm('pc_year', Params::getParam("year"));
+        Session::newInstance()->_setForm('pc_extColr', Params::getParam("extColr"));
+        Session::newInstance()->_setForm('pc_intColr', Params::getParam("intColr"));
         Session::newInstance()->_setForm('pc_doors', Params::getParam("doors"));
         Session::newInstance()->_setForm('pc_seats', Params::getParam("seats"));
         Session::newInstance()->_setForm('pc_mileage', Params::getParam("mileage"));
@@ -238,6 +250,8 @@ Plugin update URI: cars-attributes
         Session::newInstance()->_setForm('pc_car_type', Params::getParam("car_type"));
         // keep values on session
         Session::newInstance()->_keepForm('pc_year');
+        Session::newInstance()->_keepForm('pc_extColr');
+        Session::newInstance()->_keepForm('pc_intColr');
         Session::newInstance()->_keepForm('pc_doors');
         Session::newInstance()->_keepForm('pc_seats');
         Session::newInstance()->_keepForm('pc_mileage');
@@ -264,6 +278,8 @@ Plugin update URI: cars-attributes
         $mileage  = (Params::getParam("mileage") == '') ? null : Params::getParam("mileage");
         $e_size   = (Params::getParam("engine_size") == '') ? null : Params::getParam("engine_size");
         $year     = (Params::getParam("year") == '') ? null : Params::getParam("year");
+        $extColr     = (Params::getParam("extColr") == '') ? null : Params::getParam("extColr");
+        $intColr     = (Params::getParam("intColr") == '') ? null : Params::getParam("intColr");
         $warranty = (Params::getParam("warranty")!='') ? 1 : 0;
         $new      = (Params::getParam("new")!='') ? 1 : 0;
         
@@ -271,6 +287,8 @@ Plugin update URI: cars-attributes
             'doors'         => Params::getParam("doors"),
             'seats'         => Params::getParam("seats"),
             'year'          => $year,
+            'extColr'       => $extColr,
+            'intColr'       => $intColr,
             'mileage'       => $mileage,
             'engine_size'   => $e_size,
             'num_airbags'   => Params::getParam("num_airbags"),
