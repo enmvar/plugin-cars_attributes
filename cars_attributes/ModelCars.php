@@ -1,6 +1,6 @@
 <?php
     /*
-     *      OSCLass – software for creating and publishing online classified
+     *      OSCLass â€“ software for creating and publishing online classified
      *                           advertising platforms
      *
      *                        Copyright (C) 2010 OSCLASS
@@ -456,6 +456,8 @@
         {
             $array = array(
                 'i_year'            => $arrayInsert['year'],
+                's_extColr'         => $arrayInsert['extColr'],
+                's_intColr'         => $arrayInsert['intColr'],
                 'i_doors'           => $arrayInsert['doors'],
                 'i_seats'           => $arrayInsert['seats'],
                 'i_mileage'         => $arrayInsert['mileage'],
