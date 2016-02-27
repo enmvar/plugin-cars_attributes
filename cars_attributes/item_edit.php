@@ -31,6 +31,32 @@
         });
     });
 </script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#make').rules( "add", {
+			required: true,
+			digits: true,
+			messages: {
+				required: "Please select a Make."
+			}
+		});
+		$('#model').rules( "add", {
+			required: true,
+			digits: true,
+			messages: {
+				required: "Please select a Model."
+			}
+		});
+		$('#car_type').rules( "add", {
+			required: true,
+			digits: true,
+			messages: {
+				required: "Please select a Car Type."
+			}
+		});
+
+	});
+</script>
 <h2><?php _e('Car details', 'cars_attributes') ; ?></h2>
 <div>
     <div class="row _200">
@@ -39,8 +65,8 @@
                 $detail['fk_i_make_id'] = Session::newInstance()->_getForm('pc_make');
             }
         ?>
-        <label><?php _e('Make', 'cars_attributes'); ?></label>
-        <select name="make" id="make" >
+        <label><?php _e('Make', 'cars_attributes'); ?> *</label>
+        <select name="make" id="make" required>
             <option value=""><?php _e('Select a make', 'cars_attributes'); ?></option>
             <?php foreach($makes as $a){ ?>
             <option value="<?php echo $a['pk_i_id']; ?>" <?php if(@$detail['fk_i_make_id'] == $a['pk_i_id']) { echo 'selected'; } ?>><?php echo $a['s_name']; ?></option>
@@ -53,8 +79,8 @@
                 $detail['fk_i_model_id'] = Session::newInstance()->_getForm('pc_model');
             }
         ?>
-        <label><?php _e('Model', 'cars_attributes'); ?></label>
-        <select name="model" id="model">
+        <label><?php _e('Model', 'cars_attributes'); ?> *</label>
+        <select name="model" id="model" required>
             <option value="" selected><?php _e('Select a model', 'cars_attributes'); ?></option>
             <?php foreach($models as $a) { ?>
             <option value="<?php echo $a['pk_i_id']; ?>" <?php if(@$detail['fk_i_model_id'] == $a['pk_i_id']) { echo 'selected'; } ?>><?php echo $a['s_name']; ?></option>
@@ -69,8 +95,8 @@
         if(count($locales)==1) {
             $locale = $locales[0]; ?>
             <p>
-                <label><?php _e('Car type', 'cars_attributes'); ?></label>
-                <select name="car_type" id="car_type">
+                <label><?php _e('Car type', 'cars_attributes'); ?> *</label>
+                <select name="car_type" id="car_type" required>
                     <option value="" selected><?php _e('Select a car type', 'cars_attributes'); ?></option>
                     <?php foreach($car_types[$locale['pk_c_code']] as $k => $v) { ?>
                     <option value="<?php echo  $k; ?>" <?php if(@$detail['fk_vehicle_type_id'] == $k) { echo 'selected'; } ?>><?php echo @$v; ?></option>
